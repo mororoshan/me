@@ -5,7 +5,7 @@
  */
 export const config = {
   /** Base path for the app (router basename and asset base). Must match Vite `base` and GitHub Pages repo. */
-  basePath: '/portfolio_project/',
+  basePath: '/me/',
 } as const
 
 export type Config = typeof config

@@ -1,66 +1,42 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { observer } from 'mobx-react-lite'
 import { Button } from 'antd'
-import { I18N_STORAGE_KEY } from '../../shared/i18n'
+import { useAppStore } from '../../app/store/context'
 
-export default function Header() {
-  const { t, i18n } = useTranslation()
+function HeaderInner() {
+  const { t } = useTranslation()
   const location = useLocation()
-
-  const setLang = (lng: 'en' | 'ru') => {
-    i18n.changeLanguage(lng)
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(I18N_STORAGE_KEY, lng)
-    }
-  }
+  const appStore = useAppStore()
 
   return (
-    <header
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '12px 16px',
-        borderBottom: '1px solid var(--color-border)',
-        backgroundColor: 'var(--color-surface)',
-        marginBottom: 16,
-      }}
-    >
-      <nav style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <header className="w-full flex items-center justify-between px-4 py-3 border-b border-border bg-surface shrink-0">
+      <nav className="flex gap-4 items-center">
         <Link
           to="/"
-          style={{
-            color: location.pathname === '/' ? 'var(--color-accent)' : 'var(--color-text-primary)',
-            textDecoration: 'none',
-            fontWeight: 500,
-          }}
+          className={`no-underline font-medium ${location.pathname === '/' ? 'text-accent' : 'text-text-primary'}`}
         >
           {t('common.navHome')}
         </Link>
         <Link
           to="/projects"
-          style={{
-            color: location.pathname.startsWith('/projects') ? 'var(--color-accent)' : 'var(--color-text-primary)',
-            textDecoration: 'none',
-            fontWeight: 500,
-          }}
+          className={`no-underline font-medium ${location.pathname.startsWith('/projects') ? 'text-accent' : 'text-text-primary'}`}
         >
           {t('common.navProjects')}
         </Link>
       </nav>
-      <div>
+      <div className="flex gap-1">
         <Button
-          type={i18n.language === 'en' ? 'primary' : 'default'}
+          type={appStore.locale === 'en' ? 'primary' : 'default'}
           size="small"
-          onClick={() => setLang('en')}
+          onClick={() => appStore.setLocale('en')}
         >
           {t('app.langEn')}
         </Button>
         <Button
-          type={i18n.language === 'ru' ? 'primary' : 'default'}
+          type={appStore.locale === 'ru' ? 'primary' : 'default'}
           size="small"
-          onClick={() => setLang('ru')}
-          style={{ marginLeft: 4 }}
+          onClick={() => appStore.setLocale('ru')}
         >
           {t('app.langRu')}
         </Button>
@@ -68,3 +44,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default observer(HeaderInner)

@@ -16,7 +16,17 @@ The **app** layer is the application shell: entry point, router, and global prov
 | `App.tsx`     | Layout: language switcher and `<Outlet />` for route children. |
 | `App.css`     | Styles for the app shell. |
 | `routes.tsx`  | Route config: `createBrowserRouter` with `/` (Home), `/projects`, `/projects/:id`, `*` (NotFound). Lazy-loaded page components. |
-| `providers.tsx`| Ant Design `ConfigProvider` (theme + locale). Router and MobX will be extended here in later phases as needed. |
+| `providers.tsx`| Ant Design `ConfigProvider` (theme + locale), and `AppStoreProvider` (MobX app store). |
+| `store/appStore.ts` | AppStore: observable `locale`, `setLocale()`, init from localStorage, sync with i18n. |
+| `store/context.tsx` | React context and `useAppStore()` for consuming the store. |
+| `store/README.md`   | MobX usage, store list, locale persistence. See **State** below. |
+
+## State (MobX)
+
+- **AppStore** holds `locale: 'en' | 'ru'` and `setLocale(lng)`. On init, locale is read from `localStorage` and synced with i18n; on switch, store updates, i18n changes, and localStorage is written.
+- **Provider**: `Providers` wraps the tree with `AppStoreProvider` and passes `appStore`.
+- **Consumption**: Widgets/features use `useAppStore()` from `app/store/context` and `observer()` from `mobx-react-lite` where they read observable state (e.g. header language switcher).
+- Details: [app/store/README.md](store/README.md).
 
 ## Routes
 
@@ -27,7 +37,7 @@ The **app** layer is the application shell: entry point, router, and global prov
 | `/projects/:id`| Project    | Single project view (`pages/project`). |
 | `*`            | Not found  | 404 page (`pages/not-found`). |
 
-**Base path**: Router uses `basename` from `shared/config` (`basePath`), which must match Vite `base` and the GitHub Pages repo path. **GitHub Pages SPA**: requires `base` in Vite config and a copy of `index.html` to `404.html` after build (handled in Phase 10).
+**Base path**: Router uses `basename` from `shared/config` (`basePath`), which must match Vite `base` and the GitHub Pages repo path. **GitHub Pages SPA**: requires `base` in Vite config and a copy of `index.html` to `404.html` after build (Phase 11).
 
 ## References
 

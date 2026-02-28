@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { ConfigProvider, theme } from 'antd'
 import enUS from 'antd/locale/en_US'
 import ruRU from 'antd/locale/ru_RU'
+import { AppStoreProvider } from './store/context'
+import { appStore } from './store/appStore'
 
 const antTheme = {
   algorithm: theme.darkAlgorithm,
@@ -31,9 +33,13 @@ function AntConfigWrapper({ children }: { children: ReactNode }) {
 }
 
 /**
- * Global providers: Ant Design theme (dark, @theme tokens) and locale (synced with i18n).
- * Router and MobX Provider will be added in later phases.
+ * Global providers: AppStore (MobX), Ant Design theme and locale.
  */
 export function Providers({ children }: { children: ReactNode }) {
-  return <AntConfigWrapper>{children}</AntConfigWrapper>
+  return (
+    <AppStoreProvider store={appStore}>
+      <AntConfigWrapper>{children}</AntConfigWrapper>
+    </AppStoreProvider>
+  )
 }
+

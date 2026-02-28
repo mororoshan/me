@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { config } from '../shared/config'
-import App from './App'
+import Layout from './layout'
 
 const HomePage = lazy(() => import('../pages/home'))
 const ProjectsPage = lazy(() => import('../pages/projects'))
@@ -14,7 +14,7 @@ export const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <App />,
+      element: <Layout />,
       children: [
         { index: true, element: <Suspense fallback={fallback}><HomePage /></Suspense> },
         { path: 'projects', element: <Suspense fallback={fallback}><ProjectsPage /></Suspense> },

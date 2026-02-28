@@ -4,16 +4,7 @@ export default function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer
-      style={{
-        marginTop: 32,
-        padding: '16px',
-        borderTop: '1px solid var(--color-border)',
-        color: 'var(--color-text-secondary)',
-        fontSize: '0.875rem',
-        textAlign: 'center',
-      }}
-    >
+    <footer className="p-4 border-t border-border text-text-secondary text-sm text-center shrink-0">
       {t('common.copyright')}
     </footer>
   )
