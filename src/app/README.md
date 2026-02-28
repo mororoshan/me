@@ -1,27 +1,33 @@
 # App layer
 
-The **app** layer is the application shell: entry point, root component, and (in later phases) router and global providers.
+The **app** layer is the application shell: entry point, router, and global providers.
 
 ## Purpose
 
-- **Entry**: `main.tsx` is the Vite/React entry (referenced from `index.html`). It mounts the root with `createRoot`, `StrictMode`, and global styles (`index.css`).
-- **Root UI**: `index.tsx` is the app entry component that renders the root tree (currently `<App />`). Routing and global providers will be added in later phases.
-- **Shell**: `App.tsx` is the main shell component (moved from the previous `src/App.tsx`). It will be extended with layout, header, footer, and route outlet when routing is added.
+- **Entry**: `main.tsx` is the Vite/React entry (referenced from `index.html`). It mounts the root with `createRoot`, `StrictMode`, global styles (`index.css`), and `RouterProvider` with the app router.
+- **Shell**: `App.tsx` is the layout component (language switcher + `<Outlet />`). Route-matched page content renders inside the outlet.
+- **Routing**: Centralized in `routes.tsx`; uses `createBrowserRouter` with `basename` from `shared/config` (base path for GitHub Pages). Pages are lazy-loaded with `React.lazy()` and wrapped in `<Suspense>`.
 
 ## Files
 
-| File        | Role                                                                 |
-|------------|----------------------------------------------------------------------|
-| `main.tsx` | Entry script: `createRoot`, `StrictMode`, imports global CSS, renders `<App />` from `index.tsx`. |
-| `index.tsx`| App entry component: exports the root component (currently wraps `App`). |
-| `App.tsx`  | Main shell component (root UI until routing is added).               |
-| `App.css`  | Styles for the app shell.                                           |
+| File          | Role |
+|---------------|------|
+| `main.tsx`    | Entry: `createRoot`, `StrictMode`, imports i18n and CSS, renders `Providers` → `RouterProvider router={router}`. |
+| `App.tsx`     | Layout: language switcher and `<Outlet />` for route children. |
+| `App.css`     | Styles for the app shell. |
+| `routes.tsx`  | Route config: `createBrowserRouter` with `/` (Home), `/projects`, `/projects/:id`, `*` (NotFound). Lazy-loaded page components. |
+| `providers.tsx`| Ant Design `ConfigProvider` (theme + locale). Router and MobX will be extended here in later phases as needed. |
 
-## Later phases
+## Routes
 
-- **Routing**: Centralized in this layer (e.g. `routes.tsx` or inside `providers.tsx`); lazy-loaded pages; `BrowserRouter` with base path for GitHub Pages.
-- **Providers**: `providers.tsx` will wrap the app with router, MobX `Provider`, and Ant Design `ConfigProvider`.
-- Placeholder pages (home, projects, not-found) will be added in the pages layer and wired in the router.
+| Path           | Page        | Description |
+|----------------|------------|-------------|
+| `/`            | Home       | Index page (`pages/home`). |
+| `/projects`    | Projects   | Projects list (`pages/projects`). |
+| `/projects/:id`| Project    | Single project view (`pages/project`). |
+| `*`            | Not found  | 404 page (`pages/not-found`). |
+
+**Base path**: Router uses `basename` from `shared/config` (`basePath`), which must match Vite `base` and the GitHub Pages repo path. **GitHub Pages SPA**: requires `base` in Vite config and a copy of `index.html` to `404.html` after build (handled in Phase 10).
 
 ## References
 
