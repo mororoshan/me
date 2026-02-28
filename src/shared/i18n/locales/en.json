@@ -1,5 +1,27 @@
 {
   "common": {
-    "appName": "Portfolio"
+    "appName": "Portfolio",
+    "navHome": "Home",
+    "navProjects": "Projects"
+  },
+  "home": {
+    "title": "Welcome",
+    "intro": "This is my portfolio — a mix of handwritten and vibe-coded projects."
+  },
+  "projects": {
+    "title": "Projects",
+    "empty": "No projects yet.",
+    "handwritten": "Handwritten",
+    "vibeCoded": "Vibe-coded"
+  },
+  "app": {
+    "themeCheck": "Theme check",
+    "antPrimary": "Ant primary (accent)",
+    "countIs": "count is",
+    "editHint": "Edit <0>src/App.tsx</0> and save to test HMR",
+    "readTheDocs": "Click on the Vite and React logos to learn more",
+    "viteReact": "Vite + React",
+    "langEn": "EN",
+    "langRu": "RU"
   }
 }

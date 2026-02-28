@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ConfigProvider, theme } from 'antd'
+import enUS from 'antd/locale/en_US'
+import ruRU from 'antd/locale/ru_RU'
 
-/**
- * Global providers: Ant Design theme (dark, @theme tokens).
- * Router and MobX Provider will be added in later phases.
- */
 const antTheme = {
   algorithm: theme.darkAlgorithm,
   token: {
@@ -20,10 +19,21 @@ const antTheme = {
   },
 }
 
-export function Providers({ children }: { children: ReactNode }) {
+function AntConfigWrapper({ children }: { children: ReactNode }) {
+  const { i18n } = useTranslation()
+  const locale = i18n.language === 'ru' ? ruRU : enUS
+
   return (
-    <ConfigProvider theme={antTheme}>
+    <ConfigProvider theme={antTheme} locale={locale}>
       {children}
     </ConfigProvider>
   )
+}
+
+/**
+ * Global providers: Ant Design theme (dark, @theme tokens) and locale (synced with i18n).
+ * Router and MobX Provider will be added in later phases.
+ */
+export function Providers({ children }: { children: ReactNode }) {
+  return <AntConfigWrapper>{children}</AntConfigWrapper>
 }

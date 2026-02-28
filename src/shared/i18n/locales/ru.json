@@ -1,5 +1,27 @@
 {
   "common": {
-    "appName": "Портфолио"
+    "appName": "Портфолио",
+    "navHome": "Главная",
+    "navProjects": "Проекты"
+  },
+  "home": {
+    "title": "Добро пожаловать",
+    "intro": "Это моё портфолио — смесь рукописных и vibe-coded проектов."
+  },
+  "projects": {
+    "title": "Проекты",
+    "empty": "Пока нет проектов.",
+    "handwritten": "Рукописный",
+    "vibeCoded": "Vibe-coded"
+  },
+  "app": {
+    "themeCheck": "Проверка темы",
+    "antPrimary": "Ant primary (акцент)",
+    "countIs": "счётчик",
+    "editHint": "Редактируйте <0>src/App.tsx</0> и сохраните для проверки HMR",
+    "readTheDocs": "Нажмите на логотипы Vite и React, чтобы узнать больше",
+    "viteReact": "Vite + React",
+    "langEn": "EN",
+    "langRu": "RU"
   }
 }
