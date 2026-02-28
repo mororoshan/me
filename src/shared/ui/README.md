@@ -1,11 +1,20 @@
 # Shared UI
 
-Reusable UI components used by widgets and pages (buttons, layout, typography). **No components yet – structure only.**
+Reusable UI components for widgets and pages. **All components use only `@theme` variables** from `src/index.css` and must have a README + JSDoc in their folder.
+
+## Components
+
+| Component   | Purpose |
+|------------|---------|
+| **Button** | Primary/default action button. Uses `--color-accent`, `--color-accent-hover`. [→ button/README.md](./button/README.md) |
+| **Link**   | In-app nav link with accent colors. [→ link/README.md](./link/README.md) |
+| **PageTitle** | Heading with `--color-text-primary`. [→ typography/README.md](./typography/README.md) |
+| **PageText**  | Paragraph with `--color-text-secondary`. [→ typography/README.md](./typography/README.md) |
 
 ## Rules
 
-- Each component lives in its own folder (e.g. `shared/ui/button/`) with an `index.tsx` and a **README.md** (purpose, props, usage, theme tokens used).
-- All components use **only `@theme` colors** from `src/index.css`; no hardcoded hex/rgb in components.
+- Each component lives in its own folder with `index.tsx` and **README.md** (purpose, props, theme tokens, example).
+- **No hardcoded hex/rgb** in components; use `var(--color-*)` from `@theme` only.
 - Shared UI does not import from `entities`, `features`, `widgets`, or `pages`.
 
 ## References

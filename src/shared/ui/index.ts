@@ -1,5 +1,7 @@
 /**
- * Shared UI components (buttons, layout, typography).
- * No components yet – structure only. Each component will have its own README and use only @theme colors.
+ * Shared UI components (buttons, links, typography).
+ * Each component has a README in its folder and uses only @theme colors.
  */
-export {}
+export { Button, type ButtonProps } from './button'
+export { Link, type LinkProps } from './link'
+export { PageTitle, PageText, type TypographyProps } from './typography'
