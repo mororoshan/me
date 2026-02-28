@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button, Card } from 'antd'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -25,6 +26,9 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      <Card title="Theme check" style={{ marginTop: 16, maxWidth: 320 }}>
+        <Button type="primary">Ant primary (accent)</Button>
+      </Card>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
