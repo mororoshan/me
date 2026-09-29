@@ -10,6 +10,7 @@ Reusable UI components for widgets and pages. **All components use only `@theme`
 | **Link**   | In-app nav link with accent colors. [→ link/README.md](./link/README.md) |
 | **PageTitle** | Heading with `--color-text-primary`. [→ typography/README.md](./typography/README.md) |
 | **PageText**  | Paragraph with `--color-text-secondary`. [→ typography/README.md](./typography/README.md) |
+| **Tag**    | Compact label for type and technology badges. [→ tag/README.md](./tag/README.md) |
 
 ## Rules
 

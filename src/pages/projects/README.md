@@ -10,4 +10,4 @@ Projects list at `/projects`. Shows page title and empty state (or project grid 
 ## Dependencies
 
 - `react-i18next` (`useTranslation`)
-- `antd` (`Typography`)
+- `shared/ui` (`PageTitle`)

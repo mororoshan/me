@@ -10,4 +10,4 @@ Landing page at `/`. Shows a welcome title and short intro.
 ## Dependencies
 
 - `react-i18next` (`useTranslation`)
-- `antd` (`Typography`)
+- `shared/ui` (`PageTitle`, `PageText`)

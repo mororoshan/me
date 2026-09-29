@@ -14,9 +14,8 @@ The **app** layer is the application shell: entry point, router, and global prov
 |---------------|------|
 | `main.tsx`    | Entry: `createRoot`, `StrictMode`, imports i18n and CSS, renders `Providers` → `RouterProvider router={router}`. |
 | `App.tsx`     | Layout: language switcher and `<Outlet />` for route children. |
-| `App.css`     | Styles for the app shell. |
 | `routes.tsx`  | Route config: `createBrowserRouter` with `/` (Home), `/projects`, `/projects/:id`, `*` (NotFound). Lazy-loaded page components. |
-| `providers.tsx`| Ant Design `ConfigProvider` (theme + locale), and `AppStoreProvider` (MobX app store). |
+| `providers.tsx`| `AppStoreProvider` (MobX app store). |
 | `store/appStore.ts` | AppStore: observable `locale`, `setLocale()`, init from localStorage, sync with i18n. |
 | `store/context.tsx` | React context and `useAppStore()` for consuming the store. |
 | `store/README.md`   | MobX usage, store list, locale persistence. See **State** below. |

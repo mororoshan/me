@@ -1,6 +1,6 @@
 # Portfolio
 
-React portfolio app (Feature-Sliced Design, TypeScript, Vite, Ant Design, Tailwind, i18n EN/RU, MobX). See [.cursor/plans/portfolio_fsd_plan_233a3af2.plan.md](.cursor/plans/portfolio_fsd_plan_233a3af2.plan.md) for architecture.
+React portfolio app (Feature-Sliced Design, TypeScript, Vite, Tailwind, i18n EN/RU, MobX). See [.cursor/plans/portfolio_fsd_plan_233a3af2.plan.md](.cursor/plans/portfolio_fsd_plan_233a3af2.plan.md) for architecture.
 
 ---
 

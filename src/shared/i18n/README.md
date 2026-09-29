@@ -1,6 +1,6 @@
 # Shared i18n
 
-i18next + react-i18next for EN/RU. Ant Design locale is synced with `i18n.language`.
+i18next + react-i18next for EN/RU. The active language is `i18n.language`, persisted in `localStorage`.
 
 ## Initialization
 
@@ -23,10 +23,6 @@ All keys live in the default `translation` namespace, grouped by screen/feature:
 
 1. Add the key to both `shared/i18n/locales/en.json` and `shared/i18n/locales/ru.json` under the right group (`common`, `home`, `projects`, or `app`).
 2. Use in components: `const { t } = useTranslation(); t('home.title')`. For interpolated tags use `<Trans i18nKey="..." components={{ 0: <code /> }} />`.
-
-## Ant Design locale
-
-In `app/providers.tsx`, `ConfigProvider` receives `locale={locale}` where `locale` is `ruRU` or `enUS` from `antd/locale`, derived from `i18n.language`. A wrapper uses `useTranslation()` so the provider re-renders when the user switches language; Ant components (DatePicker, Table, etc.) then show in the correct language.
 
 ## Rule
 

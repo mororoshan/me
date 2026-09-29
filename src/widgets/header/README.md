@@ -10,8 +10,8 @@ None.
 
 - `react-router-dom` (`Link`, `useLocation`)
 - `react-i18next` (`useTranslation`)
-- `antd` (`Button`)
-- `shared/i18n` (`I18N_STORAGE_KEY` for persistence)
+- `shared/ui` (`Button`)
+- `app/store` (`useAppStore` for the language switcher)
 
 ## Translation keys
 
