@@ -13,7 +13,7 @@ Route-level screens composed from widgets, features, entities, and shared UI. **
 
 ## Layout
 
-Each page uses a simple layout wrapper: `max-w-3xl` or `max-w-4xl`, `mx-auto`, `px-4`, `py-8`. Typography and colors use Ant Design and `var(--color-*)` from `@theme`.
+Each page uses a simple layout wrapper: `max-w-3xl` or `max-w-4xl`, `mx-auto`, `px-4`, `py-8`. Typography and colors use shared UI components and `var(--color-*)` from `@theme`.
 
 ## Translation
 

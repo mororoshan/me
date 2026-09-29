@@ -12,7 +12,7 @@ Single project view at `/projects/:id`. Renders title, type badge, description, 
 
 ## Dependencies
 
-- `react-router-dom` (`useParams`, `Link`, `useNavigate`)
+- `react-router-dom` (`useParams`, `Navigate`)
 - `react-i18next` (`useTranslation`)
-- `antd` (`Typography`, `Tag`, `Button`)
+- `shared/ui` (`Link`, `PageTitle`, `PageText`, `Tag`)
 - `entities/project` (`projects` list)

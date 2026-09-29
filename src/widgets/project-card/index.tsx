@@ -1,42 +1,38 @@
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Card, Tag } from 'antd'
 import type { Project } from '../../entities/project'
+import { Link, Tag } from '../../shared/ui'
 
 interface ProjectCardProps {
   project: Project
 }
+
+const externalLinkClass = 'font-medium text-accent no-underline hover:text-accent-hover'
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const { t } = useTranslation()
   const typeLabel = project.type === 'handwritten' ? t('projects.handwritten') : t('projects.vibeCoded')
 
   return (
-    <Card
-      title={
-        <Link to={`/projects/${project.id}`} style={{ color: 'var(--color-accent)', textDecoration: 'none' }}>
-          {project.title}
-        </Link>
-      }
-      style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-border)' }}
-      styles={{ body: { color: 'var(--color-text-secondary)' } }}
-    >
-      <Tag style={{ marginBottom: 8 }}>{typeLabel}</Tag>
-      <p style={{ marginBottom: 12 }}>{project.description}</p>
+    <article className="flex flex-col gap-3 rounded-lg border border-border bg-surface p-4">
+      <h2 className="m-0 text-base font-semibold">
+        <Link to={`/projects/${project.id}`}>{project.title}</Link>
+      </h2>
+      <div>
+        <Tag>{typeLabel}</Tag>
+      </div>
+      <p className="m-0 text-text-secondary">{project.description}</p>
       {project.tags.length > 0 && (
-        <div style={{ marginBottom: 8 }}>
+        <div className="flex flex-wrap gap-1">
           {project.tags.map((tag) => (
-            <Tag key={tag} style={{ marginRight: 4, marginBottom: 4 }}>
-              {tag}
-            </Tag>
+            <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
       )}
       {project.link && (
-        <a href={project.link} target="_blank" rel="noreferrer" style={{ color: 'var(--color-accent)' }}>
+        <a href={project.link} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
           {t('project.link')} →
         </a>
       )}
-    </Card>
+    </article>
   )
 }

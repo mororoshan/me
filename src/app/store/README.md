@@ -24,5 +24,4 @@ Not implemented. Pages and widgets read the project list from `entities/project`
 ## Locale persistence
 
 - **Initial load**: `AppStore` constructor reads `localStorage.getItem(I18N_STORAGE_KEY)` and, if `'en'` or `'ru'`, sets `locale` and `i18n.changeLanguage(stored)`.
-- **Switch**: User clicks EN/RU in header → `appStore.setLocale(lng)` → store updates, `i18n.changeLanguage(lng)`, `localStorage.setItem(I18N_STORAGE_KEY, lng)`.
-- Ant Design locale is synced via `useTranslation()` in `AntConfigWrapper` (which re-renders when `i18n.language` changes).
+- **Switch**: User clicks EN/RU in header → `appStore.setLocale(lng)` → store updates, `i18n.changeLanguage(lng)`, `localStorage.setItem(I18N_STORAGE_KEY, lng)`. Pages read the new language through `useTranslation()`.

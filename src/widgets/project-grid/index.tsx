@@ -3,13 +3,7 @@ import ProjectCard from '../project-card'
 
 export default function ProjectGrid() {
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 24,
-      }}
-    >
+    <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(280px,1fr))]">
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}

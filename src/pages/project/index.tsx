@@ -1,9 +1,9 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Typography, Tag, Button } from 'antd'
 import { projects } from '../../entities/project'
+import { Link, PageText, PageTitle, Tag } from '../../shared/ui'
 
-const { Title, Paragraph } = Typography
+const externalLinkClass = 'font-medium text-accent no-underline hover:text-accent-hover'
 
 export default function ProjectPage() {
   const { id } = useParams<{ id: string }>()
@@ -18,36 +18,23 @@ export default function ProjectPage() {
   const typeLabel = project.type === 'handwritten' ? t('projects.handwritten') : t('projects.vibeCoded')
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      <Link to="/projects">
-        <Button type="link" style={{ marginBottom: 16, padding: 0 }}>
-          ← {t('project.backToProjects')}
-        </Button>
-      </Link>
-      <Title level={1} style={{ marginBottom: 8 }}>
-        {project.title}
-      </Title>
-      <Tag style={{ marginBottom: 16 }}>{typeLabel}</Tag>
-      <Paragraph style={{ color: 'var(--color-text-secondary)', marginBottom: 16 }}>
-        {project.description}
-      </Paragraph>
+    <div className="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-8">
+      <Link to="/projects">← {t('project.backToProjects')}</Link>
+      <PageTitle>{project.title}</PageTitle>
+      <div>
+        <Tag>{typeLabel}</Tag>
+      </div>
+      <PageText>{project.description}</PageText>
       {project.tags.length > 0 && (
-        <div style={{ marginBottom: 16 }}>
-          <span style={{ color: 'var(--color-text-tertiary)', marginRight: 8 }}>{t('project.tags')}:</span>
+        <div className="flex flex-wrap items-center gap-1">
+          <span className="mr-1 text-text-tertiary">{t('project.tags')}:</span>
           {project.tags.map((tag) => (
-            <Tag key={tag} style={{ marginRight: 4, marginBottom: 4 }}>
-              {tag}
-            </Tag>
+            <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
       )}
       {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noreferrer"
-          style={{ color: 'var(--color-accent)' }}
-        >
+        <a href={project.link} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
           {t('project.link')} →
         </a>
       )}

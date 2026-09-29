@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next'
+import { PageText, PageTitle } from '../../shared/ui'
 
 export default function NotFoundPage() {
   const { t } = useTranslation()
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      <h1>{t('notFound.title')}</h1>
-      <p style={{ color: 'var(--color-text-secondary)' }}>{t('notFound.message')}</p>
+    <div className="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-8">
+      <PageTitle>{t('notFound.title')}</PageTitle>
+      <PageText>{t('notFound.message')}</PageText>
     </div>
   )
 }

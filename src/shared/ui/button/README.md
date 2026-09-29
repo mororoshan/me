@@ -1,6 +1,6 @@
 # Button
 
-Primary and default action button. Wraps Ant Design `Button`; primary variant uses theme tokens `--color-accent` and `--color-accent-hover` (via app `ConfigProvider`). **No hardcoded colors.**
+Primary and default action button. Primary variant uses theme tokens `--color-accent` and `--color-accent-hover`. **No hardcoded colors.**
 
 ## Props
 
@@ -11,12 +11,13 @@ Primary and default action button. Wraps Ant Design `Button`; primary variant us
 | `onClick`  | `MouseEventHandler<HTMLButtonElement>`   | —          | Click handler                  |
 | `href`     | `string`                                  | —          | If set, renders as link       |
 | `disabled` | `boolean`                                 | `false`    | Disabled state                 |
-| `size`     | `'large' \| 'middle' \| 'small'`          | —          | Ant size                       |
+| `size`     | `'large' \| 'middle' \| 'small'`          | `'middle'` | Control height and type size   |
 | `className`| `string`                                  | —          | Optional CSS class             |
 
 ## Theme tokens
 
-- **Primary**: `--color-accent`, `--color-accent-hover` (via Ant `colorPrimary`, `colorPrimaryHover` in ConfigProvider).
+- **Primary**: `--color-accent`, `--color-accent-hover`
+- **Default**: `--color-surface`, `--color-border`, `--color-text-primary`
 
 ## Example
 
